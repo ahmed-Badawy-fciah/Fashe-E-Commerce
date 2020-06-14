@@ -17,18 +17,22 @@
 
             <div class="topbar-child2">
                 <span class="topbar-email">
-                    fashe@example.com
+                    fashe@example.com 
                 </span>
 
-                <div class="topbar-language rs1-select2">
-                    <select class="selection-1" name="time">
-                        <option>USD</option>
-                        <option>EUR</option>
-                    </select>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-box dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-globe"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="ml-4 header-wrapicon1" href="locale/en"><img style="max-width:20px" src="{{asset('images/LangFlags/USA.jpg')}}" alt="En"> English</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="ml-4 header-wrapicon1" href="locale/ar"><img style="max-width:20px" src="{{asset('images/LangFlags/EGY.jpg')}}" alt="Ar"> Arabic</a>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="wrap_header">
             <!-- Logo -->
             <a href="/" class="logo">
@@ -40,7 +44,7 @@
                 <nav class="menu">
                     <ul class="main_menu">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="/">{{__('navbar.home')}}</a>
                         </li>
 
                         <li class="sale-noti">
@@ -56,16 +60,16 @@
                         </li>
 
                         <li>
-                            <a href="/about">About</a>
+                            <a href="/about">{{__('navbar.about')}}</a>
                         </li>
 
                         <li>
-                            <a href="/contact">Contact</a>
+                            <a href="/contact">{{__('navbar.contact_us')}}</a>
                         </li>
                     </ul>
                 </nav>
             </div>
-
+            
             <!-- Header Icon -->
             <div class="header-icons">
                 @guest
@@ -80,11 +84,11 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item header-wrapicon1 dis-block" href="#">
+                        <a class=" ml-4 header-wrapicon1 dis-block" href="#">
                                <span class="fa fa-user"></span> {{ __('My Profile') }}
                         </a>
 
-                            <a class="dropdown-item header-wrapicon1 dis-block" href="{{ route('logout') }}"
+                            <a class="ml-4 header-wrapicon1 dis-block" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                <span class="fa fa-sign-out"></span> {{ __('Logout') }}

@@ -22,3 +22,11 @@ Route::get('/product', 'ViewsController@product');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('locale/{locale}' , function($locale){
+    if (! in_array($locale, ['en', 'ar'])) {
+        abort(404);
+    }
+    Session::Put('locale',$locale);
+    return redirect()->back();
+});
