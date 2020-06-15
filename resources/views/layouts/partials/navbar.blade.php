@@ -6,8 +6,6 @@
             <div class="topbar-social">
                 <a href="#" class="topbar-social-item fa fa-facebook"></a>
                 <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-                <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
                 <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
             </div>
 
@@ -20,16 +18,10 @@
                     fashe@example.com 
                 </span>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-box dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="fa fa-globe"></span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="ml-4 header-wrapicon1" href="locale/en"><img style="max-width:20px" src="{{asset('images/LangFlags/USA.jpg')}}" alt="En"> English</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="ml-4 header-wrapicon1" href="locale/ar"><img style="max-width:20px" src="{{asset('images/LangFlags/EGY.jpg')}}" alt="Ar"> Arabic</a>
-                    </div>
-                </div>
+                <!-- Change language component -->
+                @include('layouts.inc.languagechange')
+
+                <!-- End Change Language -->
             </div>
         </div>
         
@@ -72,34 +64,7 @@
             
             <!-- Header Icon -->
             <div class="header-icons">
-                @guest
-                    <a href="#" class="header-wrapicon1 dis-block "  data-toggle="modal" data-target="#modalLRForm">
-                        Signin <span class="fa fa-sign-in large" class="header-icon1"></span>
-                    </a>
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                        <a class=" ml-4 header-wrapicon1 dis-block" href="#">
-                               <span class="fa fa-user"></span> {{ __('My Profile') }}
-                        </a>
-
-                            <a class="ml-4 header-wrapicon1 dis-block" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                               <span class="fa fa-sign-out"></span> {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
+                @include('layouts.inc.signin&signup')
 
                 <span class="linedivide1"></span>
 
@@ -184,6 +149,13 @@
         </div>
     </div>
 
+
+
+
+<!-- __________________________________ Mobile Navabar__________________________________________ -->
+
+
+
     <!-- Header Mobile -->
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
@@ -195,9 +167,7 @@
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
-                <a href="#" class="header-wrapicon1 dis-block">
-                    <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-                </a>
+            @include('layouts.inc.signin&signup')
 
                 <span class="linedivide2"></span>
 
@@ -304,12 +274,7 @@
                             fashe@example.com
                         </span>
 
-                        <div class="topbar-language rs1-select2">
-                            <select class="selection-1" name="time">
-                                <option>USD</option>
-                                <option>EUR</option>
-                            </select>
-                        </div>
+                        @include('layouts.inc.languagechange')
                     </div>
                 </li>
 
@@ -317,44 +282,33 @@
                     <div class="topbar-social-mobile">
                         <a href="#" class="topbar-social-item fa fa-facebook"></a>
                         <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                        <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-                        <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
                         <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
                     </div>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu">
-                        <li><a href="index.html">Homepage V1</a></li>
-                        <li><a href="home-02.html">Homepage V2</a></li>
-                        <li><a href="home-03.html">Homepage V3</a></li>
-                    </ul>
-                    <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                    <a href="/">Home</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="product.html">Shop</a>
+                    <a href="/product">Shop</a>
+                </li>
+
+
+                <li class="item-menu-mobile">
+                    <a href="/cart">My Cart</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="product.html">Sale</a>
+                    <a href="/blog">Blog</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="cart.html">Features</a>
+                    <a href="/about">About</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="about.html">About</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="contact.html">Contact</a>
+                    <a href="/contact">Contact Us</a>
                 </li>
             </ul>
         </nav>

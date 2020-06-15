@@ -53,10 +53,8 @@
 <div id="dropDownSelect1"></div>
 <div id="dropDownSelect2"></div>
 
+	@include('layouts.inc.scripts')
 
-
-<!--===============================================================================================-->
-<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
 <script type="text/javascript">
 	$(".selection-1").select2({
 		minimumResultsForSearch: 20,

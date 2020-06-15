@@ -8,30 +8,30 @@ class ViewsController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('main.index');
     }
 
     public function about()
     {
-        return view('about');
+        return view('main.about');
     }
     
     public function contact()
     {
-        return view('contact');
+        return view('main.contact');
     }
 
     public function blog()
     {
-        return view('blog');
+        return view('main.blog');
     }
 
     public function cart()
     {
-        return view('cart');
+        return view('main.cart');
     }
     public function product()
     {
-        return view('product');
+        return view('main.product');
     }
 }
