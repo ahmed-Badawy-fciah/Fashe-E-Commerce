@@ -19,6 +19,12 @@ Route::get('/blog', 'ViewsController@blog');
 Route::get('/cart', 'ViewsController@cart');
 Route::get('/product', 'ViewsController@product');
 
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'Admin\AdminController@dashboard');
+    Route::get('order', 'Admin\AdminController@orders');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

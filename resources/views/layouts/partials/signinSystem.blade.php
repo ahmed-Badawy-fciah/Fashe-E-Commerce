@@ -11,11 +11,11 @@
         <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#login" role="tab"><i class="fa fa-user mr-1"></i>
-              Login</a>
+              {{__('navbar.signin')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#signup" role="tab"><i class="fa fa-user-plus mr-1"></i>
-              Register</a>
+              {{__('navbar.signup')}}</a>
           </li>
         </ul>
 
@@ -30,7 +30,7 @@
                         
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">
-                                {{ __('E-Mail Address') }}</label>
+                                {{ __('singin&signup.email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">
                             <i class="fa fa-lock ml-1"></i>    
-                            {{ __('Password') }}</label>
+                            {{ __('singin&signup.password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -60,16 +60,16 @@
                         </div>
                         <div class="text-center mt-2">
                             <button type="submit" class="btn btn-info">
-                                Log in <i class="fa fa-sign-in ml-1"></i>
+                                {{__('navbar.signin')}} <i class="fa fa-sign-in ml-1"></i>
                             </button>
                         </div>
                     </form>
                     
             <div class="modal-footer mt-2">
               <div class="options text-center text-md-right mt-1">
-                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                <p><a href="#" class="blue-text"> {{__('singin&signup.forget_password')}}</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">{{__('singin&signup.close')}}</button>
             </div>
 
           </div>
@@ -84,7 +84,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('singin&signup.name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -100,7 +100,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">
                             <i class="fa fa-email ml-1"></i>    
-                            {{ __('E-Mail Address') }}</label>
+                            {{ __('singin&signup.email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -117,7 +117,7 @@
                             
                             <label for="password" class="col-md-4 col-form-label text-md-right">
                             <i class="fa fa-lock ml-1"></i>
-                            {{ __('Password') }}</label>
+                            {{ __('singin&signup.password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -131,7 +131,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('singin&signup.confirm_password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -140,7 +140,7 @@
 
                         <div class="text-center form-sm mt-2">
                             <button type="submit" class="btn btn-info">
-                                Sign up <i class="fa fa-sign-in ml-1"></i>
+                                {{__('navbar.signup')}} <i class="fa fa-sign-in ml-1"></i>
                             </button>
                         </div>
                     </form>
@@ -151,7 +151,7 @@
             <!--Footer-->
             <div class="modal-footer">
               
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">{{__('singin&signup.close')}}</button>
             </div>
           </div>
           <!--/.Panel 8-->

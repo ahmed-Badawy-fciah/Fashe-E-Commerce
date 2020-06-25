@@ -2,13 +2,6 @@
 
 @section('content')
 <body class="animsition">
-
-
-
-
-
-
-
 	<!-- Slide1 -->
 	<section class="slide1">
 		<div class="wrap-slick1">
@@ -26,7 +19,7 @@
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 							<!-- Button -->
 							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
+								{{__('home.shop')}}
 							</a>
 						</div>
 					</div>
@@ -174,7 +167,7 @@
 		<div class="container">
 			<div class="sec-title p-b-60">
 				<h3 class="m-text5 t-center">
-					Featured Products
+					{{__('home.product')}}
 				</h3>
 			</div>
 
@@ -556,7 +549,7 @@
 		<div class="container">
 			<div class="sec-title p-b-52">
 				<h3 class="m-text5 t-center">
-					Our Blog
+					{{__('home.blog')}}
 				</h3>
 			</div>
 
@@ -640,7 +633,7 @@
 	<section class="instagram p-t-20">
 		<div class="sec-title p-b-52 p-l-15 p-r-15">
 			<h3 class="m-text5 t-center">
-				@ follow us on Instagram
+				{{__('home.instagram')}}
 			</h3>
 		</div>
 

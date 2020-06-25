@@ -40,15 +40,15 @@
                         </li>
 
                         <li class="sale-noti">
-                            <a href="/product">Shop</a>
+                            <a href="/product">{{__('navbar.shop')}}</a>
                         </li>
 
                         <li>
-                            <a href="/cart">My Cart</a>
+                            <a href="/cart">{{__('navbar.cart')}}</a>
                         </li>
 
                         <li>
-                            <a href="/blog">Blog</a>
+                            <a href="/blog">{{__('navbar.blog')}}</a>
                         </li>
 
                         <li>
