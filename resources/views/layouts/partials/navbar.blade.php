@@ -28,7 +28,7 @@
         <div class="wrap_header">
             <!-- Logo -->
             <a href="/" class="logo">
-                <img src="images/icons/logo.png" alt="IMG-LOGO">
+                <img src="{{asset('/images/icons/logo.png')}}" alt="IMG-LOGO">
             </a>
 
             <!-- Menu -->
@@ -69,7 +69,7 @@
                 <span class="linedivide1"></span>
 
                 <div class="header-wrapicon2">
-                    <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <img src="{{asset('/images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
 
                     <!-- Header cart noti -->

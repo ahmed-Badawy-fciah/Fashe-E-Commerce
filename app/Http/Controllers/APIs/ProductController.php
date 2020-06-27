@@ -4,10 +4,10 @@ namespace App\Http\Controllers\APIs;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Blog;
-use App\Http\Resources\BlogResource;
+use App\Http\Resources\productResource;
+use App\Model\Product;
 
-class BlogController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = BlogResource::collection(Blog::latest()->get());
-        return response()->json($blogs);
+        $products = productResource::collection(Product::latest()->get());
+        return response()->json($products);
     }
 
     /**
@@ -28,7 +28,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        return response(new BlogResource(Blog::create($request->all())), 201);
+        return response(new productResource(Product::create($request->all())), 201);
     }
 
     /**
@@ -39,7 +39,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        return new BlogResource(Blog::find($id));
+        return new productResource(Product::find($id));
     }
 
     /**
@@ -50,8 +50,8 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        $blog = Blog::find($id)->update($request->all());
+    {
+        $product = Product::find($id)->update($request->all());
         return response('Updated', 201);
     }
 
@@ -63,7 +63,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::find($id)->delete();
+        Product::find($id)->delete();
         return response('Deleted' , 201);
     }
 }

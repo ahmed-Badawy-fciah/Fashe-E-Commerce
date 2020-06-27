@@ -21,4 +21,9 @@ class AdminController extends Controller
     {
         return view('admin.produccts');
     }
+
+    public function blogs()
+    {
+        return view('admin.blogs');
+    }
 }

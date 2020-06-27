@@ -23,6 +23,7 @@ Route::get('/product', 'ViewsController@product');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@dashboard');
     Route::get('order', 'Admin\AdminController@orders');
+    Route::get('blog', 'Admin\AdminController@blogs');
 });
 
 Auth::routes();

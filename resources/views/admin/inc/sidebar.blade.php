@@ -32,7 +32,7 @@
         </h6>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{url('/admin')}}">
+                    <a class="nav-link active" href="{{url('/admin/blog')}}">
                     <span class="fa fa-paste"></span>
                     Blogs
                     </a>
