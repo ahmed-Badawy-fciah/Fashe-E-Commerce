@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin/customer')}}">
+                <a class="nav-link" href="{{url('/admin/review')}}">
                 <span class="fa fa-question"></span>
                 Reviews
                 </a>
@@ -56,21 +56,21 @@
             <ul class="nav flex-column">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/product')}}">
+                    <a class="nav-link" href="{{url('/admin/employee')}}">
                     <span class="fa fa-user"> </span>
                     Employees
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/product')}}">
+                    <a class="nav-link" href="{{url('/admin/role')}}">
                     <span class="fa fa-user-plus"> </span>
                     Roles
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/product')}}">
+                    <a class="nav-link" href="{{url('/admin/permission')}}">
                     <span class="fa fa-link"> </span>
-                    Permmission
+                    Permissions
                     </a>
                 </li>     
             </ul>
@@ -91,13 +91,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/product')}}">
+                    <a class="nav-link" href="{{url('/admin/size')}}">
                     <span class="fa fa-link"></span>
                     Sizes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/product')}}">
+                    <a class="nav-link" href="{{url('/admin/color')}}">
                     <span class="fa fa-link"></span>
                     Colors
                     </a>

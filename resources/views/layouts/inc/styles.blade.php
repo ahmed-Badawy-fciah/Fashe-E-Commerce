@@ -30,4 +30,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.min.css" />
+	
 <!--===============================================================================================-->
