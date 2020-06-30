@@ -20,12 +20,8 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Example select</label>
-                        <select multiple  class="form-control " id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <select multiple  class="form-control " id="tagsbody">
+                            
                         </select>
                     </div>
                     <div class="form-group">
@@ -46,6 +42,7 @@
                         <th>#</th>
                         <th>title</th>
                         <th>Written By</th>
+                        <th>Tags</th>
                         <th>Edit</th>
                         <th>Delete</th>
                         </tr>
@@ -61,7 +58,7 @@
 @include('layouts.inc.scripts')
 <script>
     $(document).ready( function () {
-        
+        gettags();
         getblogs();
 
 
@@ -70,18 +67,21 @@
 
             let title = $('#title').val();
             let body = $('#body').val();
+            let tags = $('#tagsbody').val();
+            console.log(tags)
             let id = $('#id').val();
             if ($('input.checkStoreOrUpdate').val() == 'update') {
                 updateItem(id , title , body);
             }
             else{
-                addItem(title , body)
+                addItem(title , body , tags)
             }
         });
 
         $('body').on('click' , '.clear' , function(){
             $('#title').val('');
             $('#body').val('');
+            $('#tagsbody').val('');
             $('#id').val('');
             $('h1.headLine').replaceWith("<h1 class='headLine'>Add Item</item>" );
             $('input.checkStoreOrUpdate').replaceWith("<input type='submit' value='submit' class='checkStoreOrUpdate mb-2 btn btn-success' >");
@@ -109,6 +109,7 @@
                 location.reload();
                 $('#title').val('');
                 $('#body').val('');
+                $('#tagsbody').val('');
                 $('#id').val('');
             });
         }
@@ -153,20 +154,39 @@
             }).done(function(blogs){
                 let output = '';
                 let counter = 1 ;
+                let tagsrow = '';
                 $.each(blogs, function(key , blog){
+                    $.each(blog.tags,function(key, tag){
+                        tagsrow += tag.name + ', '
+                    });
                     output += `
-                        <tr>
+                        <tr id='${blog.id}'>
                         <td>100${counter}</td>
                         <td>${blog.title}</td>
-                        <td>${blog.description}</td>
+                        <td>${blog.written_by}</td>
+                        <td>${tagsrow}</td>
                         <td><a class="btn btn-primary btn-sm showLink" href="#blogs" data-id="${blog.id}" data-title="${blog.title}" data-body="${blog.description}">Edit</a></td>
                         <td><a class="btn btn-danger btn-sm deleteLink" data-id="${blog.id}">Delete</a></td>
-                        </tr>
-                    `
+                        </tr>`
                     counter++;
+                    tagsrow= '';
                 });                
                 $('#items').append(output);
                 $('#table_id').DataTable();
+            });
+        }
+
+        function gettags(){
+            $.ajax({
+                url:'http://zeroweb.com/api/tag'
+            }).done(function(tags){
+                let output = '';
+                $.each(tags, function(key , tag){
+                    output += `
+                        <option value="${tag.id}">${tag.name}</option>
+                    `
+                });                
+                $('#tagsbody').append(output);
             });
         }
     });

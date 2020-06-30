@@ -17,7 +17,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        return TagResource::collection(Tag::latest()->get());
+        return response()->json(TagResource::collection(Tag::latest()->get()));
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        return response(new TagResource(Tag::create($request->all())), 201);
+        return response()->json(new TagResource(Tag::create($request->all())));
     }
 
     /**
@@ -39,7 +39,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        return new TagResource(Tag::find($id));
+        return response()->json(new TagResource(Tag::find($id)));
     }
 
     /**
@@ -51,8 +51,9 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::find($id)->update($request->all());
-        return response('Updated', 201);
+        $tag = Tag::findOrFail($id);
+        $tag->update($request->all());
+        return response()->json(new TagResource($tag));
     }
 
     /**
@@ -63,7 +64,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::find($id)->delete();
-        return response('Deleted' , 201);
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+        return response()->json(new TagResource($tag));
     }
 }

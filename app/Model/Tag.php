@@ -24,4 +24,11 @@ class Tag extends Model
     }
 
     
+
+    //relationships
+
+    public function blogs()
+    {
+        return $this->belongsToMany('App\Model\Blog');
+    }
 }

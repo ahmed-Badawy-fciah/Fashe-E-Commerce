@@ -24,6 +24,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@dashboard');
     Route::get('order', 'Admin\AdminController@orders');
     Route::get('blog', 'Admin\AdminController@blogs');
+    Route::get('tag', 'Admin\AdminController@tags');
+    Route::get('reply', 'Admin\AdminController@replies');
 });
 
 Auth::routes();

@@ -24,6 +24,17 @@ class AdminController extends Controller
 
     public function blogs()
     {
-        return view('admin.blogs');
+        return view('admin.blog.blogs');
     }
+
+    public function tags()
+    {
+        return view('admin.blog.tags');
+    }
+
+    public function replies()
+    {
+        return view('admin.blog.replies');
+    }
+    
 }

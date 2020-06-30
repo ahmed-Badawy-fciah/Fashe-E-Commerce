@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Blog;
 use App\Http\Resources\BlogResource;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -28,7 +29,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        return response(new BlogResource(Blog::create($request->all())), 201);
+        $blog = Blog::create($request->all());
+        return response(new BlogResource($blog));
     }
 
     /**
@@ -63,7 +65,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::find($id)->delete();
-        return response('Deleted' , 201);
+        $blog = Blog::find($id);
+        $blog->delete();
+        return response()->json($blog);
+        // return response('Deleted' , 201);
     }
 }

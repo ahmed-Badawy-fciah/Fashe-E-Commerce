@@ -16,7 +16,7 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        return ReplyResource::collection(Reply::latest()->get());
+        return response()->json(ReplyResource::collection(Reply::latest()->get()));
     }
 
     /**

@@ -38,13 +38,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/order')}}">
+                    <a class="nav-link" href="{{url('/admin/tag')}}">
                     <span class="fa fa-link"></span>
                     Tags
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/admin/customer')}}">
+                    <a class="nav-link" href="{{url('/admin/reply')}}">
                     <span class="fa fa-comments"></span>
                     Replies
                     </a>
