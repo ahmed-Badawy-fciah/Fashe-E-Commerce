@@ -10,7 +10,7 @@
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-        <a class=" ml-4 header-wrapicon1 dis-block" href="#">
+        <a class=" ml-4 header-wrapicon1 dis-block" href="{{url('/myprofile')}}">
                 <span class="fa fa-user"></span> {{ __('singin&signup.my_account') }}
         </a>
 

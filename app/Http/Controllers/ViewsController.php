@@ -34,4 +34,9 @@ class ViewsController extends Controller
     {
         return view('main.product');
     }
+
+    public function profile()
+    {
+        return view('main.profile');
+    }
 }

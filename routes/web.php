@@ -18,7 +18,7 @@ Route::get('/contact', 'ViewsController@contact');
 Route::get('/blog', 'ViewsController@blog');
 Route::get('/cart', 'ViewsController@cart');
 Route::get('/product', 'ViewsController@product');
-
+Route::get('/myprofile', 'ViewsController@profile');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@dashboard');
@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
     Route::get('size', 'Admin\AdminController@sizes');
     Route::get('color', 'Admin\AdminController@colors');
 });
+
 
 Auth::routes();
 
