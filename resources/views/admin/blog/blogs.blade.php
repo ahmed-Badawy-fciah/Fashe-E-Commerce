@@ -9,25 +9,29 @@
                 <h1 class="h2">Blogs</h1>
                 
             </div>
-            <h1 class="text-secondary text-bold">Welcome Admin</h1>
+            <h1 class="text-secondary text-bold">Welcome {{auth()->user()->name}}</h1>
             <p>Go to the home page? <a href="{{url('/')}}" class="btn btn-light btn-round">Go</a></p> 
             <hr>
             <div class="mt-4 bg-light">
-                <form id="blogForm" class=" m-1  mb-2">
+                <form id="blogForm" class=" m-1  mb-2" method="POST" action="/admin/blog">
+                    @csrf
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" id="title" class="form-control">
+                        <input type="text" id="title" class="form-control" name="title">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Example select</label>
-                        <select multiple  class="form-control " id="tagsbody">
-                            
+                            <select multiple  class="form-control " id="tagsbody" name="tags[]">
+                            @foreach($tags as $tag)
+                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Body</label>
-                        <textarea type="text" id="body" class="form-control" ></textarea>
+                        <textarea type="text" id="description" class="form-control" name="description"></textarea>
                     </div>
+                    <input type="hidden" name="" id="auth" value="{{auth()->user()->name}}">
                     <input type="hidden" class="hidden" id="id">
                         <input type="submit" value="submit" class="checkStoreOrUpdate btn btn-success mb-2">
                         <button type="button" class="btn btn-primary float-right clear">Clear</button>
@@ -45,10 +49,45 @@
                         <th>Tags</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>
+                        <span class="fa fa-external-link"></span>
+                        Preview</th>
                         </tr>
                     </thead>
                     <tbody id="items">
-                        
+                        @php
+                            $counts = 1;
+                        @endphp
+                        @forelse($blogs as $blog)
+                            <tr>
+                                <td>{{$counts}}</td>
+                                <td>{{$blog->title}}</td>
+                                <td>{{$blog->user->name}}</td>
+                                <td>
+                                @if(count($blog->tags) > 0)
+                                    @foreach($blog->tags as $tag)
+                                        {{$tag->name}},
+                                    @endforeach
+                                @endif
+                                </td>
+                                <td><a href="#" class="btn btn-primary btn-sm">
+                                <span class="fa fa-edit"></span> Edit</a></td>
+                                <td>
+                                <form action="{{url('admin/blog') . '/' . $blog->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                <span class="fa fa-trash"></span> Danger</button></td>
+                                </form>
+                                
+                                <td>
+                                    <a href="#" target="_blank" class="btn btn-info btn-sm">
+                                    <span class="fa fa-external-link"></span> view</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr><h2 class="text-center text-danger"></h2></tr>
+                        @endforelse
                     </tbody>
                     </table>
                 </div> 
@@ -57,139 +96,9 @@
 </div>
 @include('layouts.inc.scripts')
 <script>
-    $(document).ready( function () {
-        gettags();
-        getblogs();
-
-
-        $('#blogForm').on('submit' , function(e){
-            e.preventDefault();
-
-            let title = $('#title').val();
-            let body = $('#body').val();
-            let tags = $('#tagsbody').val();
-            console.log(tags)
-            let id = $('#id').val();
-            if ($('input.checkStoreOrUpdate').val() == 'update') {
-                updateItem(id , title , body);
-            }
-            else{
-                addItem(title , body , tags)
-            }
-        });
-
-        $('body').on('click' , '.clear' , function(){
-            $('#title').val('');
-            $('#body').val('');
-            $('#tagsbody').val('');
-            $('#id').val('');
-            $('h1.headLine').replaceWith("<h1 class='headLine'>Add Item</item>" );
-            $('input.checkStoreOrUpdate').replaceWith("<input type='submit' value='submit' class='checkStoreOrUpdate mb-2 btn btn-success' >");
-        });
-
-        $('body').on('click' , '.showLink' , function(e){
-            e.preventDefault();
-            let id = $(this).data('id');
-            let title = $(this).data('title');
-            let body = $(this).data('body');
-            $('#title').val(title)  ;
-            $('#body').val(body) ;
-            $('#id').val(id);
-            $('input.checkStoreOrUpdate').replaceWith("<input type='submit' value='update' class='checkStoreOrUpdate mb-2 btn btn-info' >");
-        });
-
-
-        function addItem(title , body){
-            $.ajax({
-                method: 'POST',
-                url: 'http://zeroweb.com/api/blog',
-                data: {title: title, description: body}
-            }).done(function(item){
-                alert('item #' + item.id + ' Add successfully!');
-                location.reload();
-                $('#title').val('');
-                $('#body').val('');
-                $('#tagsbody').val('');
-                $('#id').val('');
-            });
-        }
-
-        function updateItem(id,title , body){
-            $.ajax({
-                method: 'POST',
-                url: 'http://zeroweb.com/api/blog/' + id,
-                data: {_method:'PUT' , id:id , title:title , description:body}
-            }).done(function(item){
-                alert('item #' + item.id + ' updated successfully!');
-                location.reload();
-                $('#title').val('');
-                $('#body').val('');
-                $('#id').val('');
-            });
-        }
-
-        $('body').on('click' , '.deleteLink' , function(e){
-            e.preventDefault();
-            let id = $(this).data('id');
-            deleteItem(id);
-        });
-
-        function deleteItem(id){
-            $.ajax({
-                method: 'POST',
-                url: 'http://zeroweb.com/api/blog/' + id,
-                data: {_method: 'DELETE'}
-            }).done(function(){
-                alert('This item ' + id + ' is deleted successfully!');
-                $('#title').val('');
-                $('#body').val('');
-                $('#id').val('');
-                location.reload();
-            });
-        }
-
-        function getblogs(){
-            $.ajax({
-                url:'http://zeroweb.com/api/blog'
-            }).done(function(blogs){
-                let output = '';
-                let counter = 1 ;
-                let tagsrow = '';
-                $.each(blogs, function(key , blog){
-                    $.each(blog.tags,function(key, tag){
-                        tagsrow += tag.name + ', '
-                    });
-                    output += `
-                        <tr id='${blog.id}'>
-                        <td>100${counter}</td>
-                        <td>${blog.title}</td>
-                        <td>${blog.written_by}</td>
-                        <td>${tagsrow}</td>
-                        <td><a class="btn btn-primary btn-sm showLink" href="#blogs" data-id="${blog.id}" data-title="${blog.title}" data-body="${blog.description}">Edit</a></td>
-                        <td><a class="btn btn-danger btn-sm deleteLink" data-id="${blog.id}">Delete</a></td>
-                        </tr>`
-                    counter++;
-                    tagsrow= '';
-                });                
-                $('#items').append(output);
-                $('#table_id').DataTable();
-            });
-        }
-
-        function gettags(){
-            $.ajax({
-                url:'http://zeroweb.com/api/tag'
-            }).done(function(tags){
-                let output = '';
-                $.each(tags, function(key , tag){
-                    output += `
-                        <option value="${tag.id}">${tag.name}</option>
-                    `
-                });                
-                $('#tagsbody').append(output);
-            });
-        }
-    });
+$(document).ready( function () {
+        $('#table_id').DataTable();
+});
 </script>
 @endsection
  

@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function dashboard()
     {
         return view('admin.dashboard');
@@ -25,12 +35,6 @@ class AdminController extends Controller
     public function reviews()
     {
         return view('admin.reviews');
-    }
-
-
-    public function blogs()
-    {
-        return view('admin.blog.blogs');
     }
 
     public function tags()

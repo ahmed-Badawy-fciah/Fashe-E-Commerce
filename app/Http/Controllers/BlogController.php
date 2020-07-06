@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\APIs;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Resources\categoryResource;
-use App\Model\Category;
+use App\Http\Resources\BlogResource;
+use App\Model\Blog;
+use App\Model\Tag;
 
-class CategoryController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = categoryResource::collection(Category::latest()->get());
-        return response()->json($categories);
+        $blogs = Blog::latest()->get();
+        return view('admin.blog.blogs', [
+            'blogs' => $blogs,
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -28,7 +31,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return response(new categoryResource(Category::create($request->all())), 201);
+        $blog = auth()->user()->blogs()->create($request->except(['tags']))->tags()->sync(request('tags'));
+        return back();
     }
 
     /**
@@ -39,7 +43,18 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return new categoryResource(Category::find($id));
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -51,8 +66,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Category = Category::find($id)->update($request->all());
-        return response('Updated', 201);
+        //
     }
 
     /**
@@ -63,7 +77,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
-        return response('Deleted' , 201);
+        Blog::findOrfail($id)->delete();
+        return back();
     }
 }

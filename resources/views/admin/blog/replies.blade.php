@@ -37,29 +37,7 @@
 @include('layouts.inc.scripts')
 <script>
     $(document).ready( function () {
-        
-        getblogs();
-
-        function getblogs(){
-            $.ajax({
-                url:'http://zeroweb.com/api/reply'
-            }).done(function(replies){
-                let output = '';
-                let counter = 1 ;
-                $.each(replies, function(key , reply){
-                    output += `
-                        <tr>
-                        <td>100${counter}</td>
-                        <td>${reply.comment}</td>
-                        <td>${reply.written_on}</td>
-                        </tr>
-                    `
-                    counter++;
-                });                
-                $('#items').append(output);
-                $('#table_id').DataTable();
-            });
-        }
+        $('#table_id').DataTable();
     });
 </script>
 @endsection

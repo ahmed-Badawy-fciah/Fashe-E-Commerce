@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\APIs;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +17,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        return response()->json(TagResource::collection(Tag::latest()->get()));
+        $tags = Tag::latest()->get();
+        return view('admin.blog.tags', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -28,7 +31,8 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(new TagResource(Tag::create($request->all())));
+        Tag::create($request->all());
+        return back();
     }
 
     /**
@@ -39,7 +43,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        return response()->json(new TagResource(Tag::find($id)));
+        //
     }
 
     /**
@@ -53,7 +57,6 @@ class TagController extends Controller
     {
         $tag = Tag::findOrFail($id);
         $tag->update($request->all());
-        return response()->json(new TagResource($tag));
     }
 
     /**
@@ -64,8 +67,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->delete();
-        return response()->json(new TagResource($tag));
+        Tag::findOrFail($id)->delete();
+        return back()->with('message' , 'success');
     }
 }
