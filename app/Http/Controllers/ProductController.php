@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Blog;
-use App\Model\Tag;
+use App\Model\product;
 
-class BlogController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,17 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->get();
-        return view('admin.blog.blogs', [
-            'blogs' => $blogs,
-            'tags' => Tag::all(),
-        ]);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -30,8 +35,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $blog = auth()->user()->blogs()->create($request->except(['tags']))->tags()->sync(request('tags'));
-        return back();
+        //
     }
 
     /**
@@ -42,10 +46,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog =  Blog::findOrFail($id);
-        return view('blog-detail', [
-            'blog' => $blog,
-        ]);
+        // $product = Product::findOrFail($id);
+        return view('product-detail');
     }
 
     /**
@@ -79,7 +81,6 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::findOrfail($id)->delete();
-        return back();
+        //
     }
 }

@@ -81,7 +81,7 @@
                                 </form>
                                 
                                 <td>
-                                    <a href="#" target="_blank" class="btn btn-info btn-sm">
+                                    <a href="{{url('blog') . '/' . $blog->id}}" target="_blank" class="btn btn-info btn-sm">
                                     <span class="fa fa-external-link"></span> view</a>
                                 </td>
                             </tr>

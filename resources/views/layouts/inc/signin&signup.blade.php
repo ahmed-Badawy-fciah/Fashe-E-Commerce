@@ -10,11 +10,11 @@
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-        <a class=" ml-4 header-wrapicon1 dis-block" href="{{url('/myprofile')}}">
+        <a class=" m-2 header-wrapicon1 dis-block" href="{{url('/myprofile')}}">
                 <span class="fa fa-user"></span> {{ __('singin&signup.my_account') }}
         </a>
 
-            <a class="ml-4 header-wrapicon1 dis-block" href="{{ route('logout') }}"
+            <a class="m-2 header-wrapicon1 dis-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                 <span class="fa fa-sign-out"></span> {{ __('singin&signup.logout') }}

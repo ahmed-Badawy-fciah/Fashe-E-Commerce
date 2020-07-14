@@ -9,8 +9,7 @@
     @include('layouts.inc.styles')
     
 </head>
-<body>
-    
+<body dir="{{(App::isLocale('ar') ? 'rtl' : 'ltr')}}">
     
 @include('layouts.partials.navbar')
 

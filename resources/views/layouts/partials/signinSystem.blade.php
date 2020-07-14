@@ -22,7 +22,7 @@
         <!-- Tab panels -->
         <div class="tab-content">
           <!--Panel 7-->
-          <div class="tab-pane fade in show active mt-2" id="login" role="tabpanel">
+          <div class="tab-pane fade in show active m-4" id="login" role="tabpanel">
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -30,6 +30,7 @@
                         
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">
+                                <i class="fa fa-envelope"></i>    
                                 {{ __('singin&signup.email') }}</label>
 
                             <div class="col-md-6">

@@ -16,6 +16,8 @@ Route::get('/', 'ViewsController@index');
 Route::get('/about', 'ViewsController@about');
 Route::get('/contact', 'ViewsController@contact');
 Route::get('/blog', 'ViewsController@blog');
+Route::get('/blog/{id}', 'BlogController@show');
+Route::get('/product/{id}', 'ProductController@show');
 Route::get('/cart', 'ViewsController@cart');
 Route::get('/product', 'ViewsController@product');
 Route::get('/myprofile', 'ViewsController@profile');
@@ -23,12 +25,11 @@ Route::get('/myprofile', 'ViewsController@profile');
 
 Route::prefix('admin')->group(function () {
     Route::resource('blog', 'BlogController')->only([
-        'index','store', 'show' , 'update', 'destroy'
+        'index','store' , 'update', 'destroy'
     ]);
     Route::resource('tag', 'TagController')->only([
         'index','store', 'show' , 'update', 'destroy'
     ]);
-    
 });
 
 
