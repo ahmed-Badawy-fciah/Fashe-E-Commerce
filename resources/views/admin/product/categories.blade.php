@@ -39,11 +39,55 @@
                 <div class="form-group m-1">
                     <label >category Colors (optional)</label>
                     <select multiple class="form-control" >
-                    <option>Red</option>
+                    <option class="bg-danger">Red</option>
                     <option>White</option>
                     <option>Black</option>
                     </select>
                 </div>
+                <div class="form-check form-check-inline m-1">
+                    <div class="filter-color p-t-22 p-b-50 bo3">
+                                <div class="m-text15 p-b-12">
+                                    Color
+                                </div>
+
+                                <ul class="flex-w">
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter1" type="checkbox" name="color-filter1">
+                                        <label class="color-filter color-filter1" for="color-filter1"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter2" type="checkbox" name="color-filter2">
+                                        <label class="color-filter color-filter2" for="color-filter2"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter3" type="checkbox" name="color-filter3">
+                                        <label class="color-filter color-filter3" for="color-filter3"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter4" type="checkbox" name="color-filter4">
+                                        <label class="color-filter color-filter4" for="color-filter4"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter5" type="checkbox" name="color-filter5">
+                                        <label class="color-filter color-filter5" for="color-filter5"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter6" type="checkbox" name="color-filter6">
+                                        <label class="color-filter " style="background-color: #fff390;" for="color-filter6"></label>
+                                    </li>
+
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="color-filter7" type="checkbox" name="color-filter7">
+                                        <label class="color-filter color-filter7" for="color-filter7"></label>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
                 <div class="bfh-colorpicker" data-name="colorpicker2" data-color="#FF0000">
                 </div>
                 <div class="form-group m-3">
@@ -71,110 +115,7 @@
                         <td>sit</td>
                         </tr>
                         <tr>
-                        <td>1,002</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td>elit</td>
-                        </tr>
-                        <tr>
-                        <td>1,003</td>
-                        <td>Integer</td>
-                        <td>nec</td>
-                        <td>odio</td>
-                        <td>Praesent</td>
-                        </tr>
-                        <tr>
-                        <td>1,003</td>
-                        <td>libero</td>
-                        <td>Sed</td>
-                        <td>cursus</td>
-                        <td>ante</td>
-                        </tr>
-                        <tr>
-                        <td>1,004</td>
-                        <td>dapibus</td>
-                        <td>diam</td>
-                        <td>Sed</td>
-                        <td>nisi</td>
-                        </tr>
-                        <tr>
-                        <td>1,005</td>
-                        <td>Nulla</td>
-                        <td>quis</td>
-                        <td>sem</td>
-                        <td>at</td>
-                        </tr>
-                        <tr>
-                        <td>1,006</td>
-                        <td>nibh</td>
-                        <td>elementum</td>
-                        <td>imperdiet</td>
-                        <td>Duis</td>
-                        </tr>
-                        <tr>
-                        <td>1,007</td>
-                        <td>sagittis</td>
-                        <td>ipsum</td>
-                        <td>Praesent</td>
-                        <td>mauris</td>
-                        </tr>
-                        <tr>
-                        <td>1,008</td>
-                        <td>Fusce</td>
-                        <td>nec</td>
-                        <td>tellus</td>
-                        <td>sed</td>
-                        </tr>
-                        <tr>
-                        <td>1,009</td>
-                        <td>augue</td>
-                        <td>semper</td>
-                        <td>porta</td>
-                        <td>Mauris</td>
-                        </tr>
-                        <tr>
-                        <td>1,010</td>
-                        <td>massa</td>
-                        <td>Vestibulum</td>
-                        <td>lacinia</td>
-                        <td>arcu</td>
-                        </tr>
-                        <tr>
-                        <td>1,011</td>
-                        <td>eget</td>
-                        <td>nulla</td>
-                        <td>Class</td>
-                        <td>aptent</td>
-                        </tr>
-                        <tr>
-                        <td>1,012</td>
-                        <td>taciti</td>
-                        <td>sociosqu</td>
-                        <td>ad</td>
-                        <td>litora</td>
-                        </tr>
-                        <tr>
-                        <td>1,013</td>
-                        <td>torquent</td>
-                        <td>per</td>
-                        <td>conubia</td>
-                        <td>nostra</td>
-                        </tr>
-                        <tr>
-                        <td>1,014</td>
-                        <td>per</td>
-                        <td>inceptos</td>
-                        <td>himenaeos</td>
-                        <td>Curabitur</td>
-                        </tr>
-                        <tr>
-                        <td>1,015</td>
-                        <td>sodales</td>
-                        <td>ligula</td>
-                        <td>in</td>
-                        <td>libero</td>
-                        </tr>
+                        
                     </tbody>
                     </table>
                 </div> 

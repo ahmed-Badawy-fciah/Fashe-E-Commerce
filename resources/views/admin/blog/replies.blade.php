@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                         <th>#</th>
+                        <th>Written By</th>
                         <th>Comment Body</th>
                         <th>Written on </th>
                         </tr>

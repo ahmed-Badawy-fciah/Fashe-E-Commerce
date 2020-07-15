@@ -10,9 +10,13 @@
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-        <a class=" m-2 header-wrapicon1 dis-block" href="{{url('/myprofile')}}">
+            <a class=" m-2 header-wrapicon1 dis-block" href="{{url('/admin')}}">
+                <span class="fa fa-plus"></span> My Admin Panel
+            </a>
+            
+            <a class=" m-2 header-wrapicon1 dis-block" href="{{url('/myprofile')}}">
                 <span class="fa fa-user"></span> {{ __('singin&signup.my_account') }}
-        </a>
+            </a>
 
             <a class="m-2 header-wrapicon1 dis-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

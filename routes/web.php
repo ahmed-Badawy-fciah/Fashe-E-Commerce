@@ -24,12 +24,28 @@ Route::get('/myprofile', 'ViewsController@profile');
 
 
 Route::prefix('admin')->group(function () {
+    Route::get('/', function(){
+        return view('admin.dashboard');
+    });
+    
+    Route::apiresource('customer', 'CustomerController');
+    Route::apiresource('order', 'OrderController');
+    Route::apiresource('review', 'ReviewController');
     Route::resource('blog', 'BlogController')->only([
         'index','store' , 'update', 'destroy'
     ]);
     Route::resource('tag', 'TagController')->only([
         'index','store', 'show' , 'update', 'destroy'
     ]);
+    Route::apiresource('reply', 'ReplyController');
+    Route::apiresource('role', 'RoleController');
+    Route::apiresource('employee', 'EmployeeController');
+
+    Route::apiresource('category', 'CategoryController');
+    Route::apiresource('product', 'ProductController');
+    Route::apiresource('size', 'SizeController');
+    Route::apiresource('color', 'ColorController');
+
 });
 
 

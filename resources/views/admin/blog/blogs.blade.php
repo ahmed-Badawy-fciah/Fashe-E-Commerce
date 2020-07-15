@@ -28,13 +28,17 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <input type='file' id="imgInp" />
+                        <img id="blah" src="#" alt="your image" />
+                    </div>
+                    <div class="form-group">
                         <label>Body</label>
-                        <textarea type="text" id="description" class="form-control" name="description"></textarea>
+                        <textarea type="text" id="editor" class="form-control" name="description"></textarea>
                     </div>
                     <input type="hidden" name="" id="auth" value="{{auth()->user()->name}}">
                     <input type="hidden" class="hidden" id="id">
                         <input type="submit" value="submit" class="checkStoreOrUpdate btn btn-success mb-2">
-                        <button type="button" class="btn btn-primary float-right clear">Clear</button>
+                        <input type="reset" class="btn btn-primary float-right clear" value="Clear">
                 </form>
             </div>
             
@@ -56,9 +60,10 @@
                     </thead>
                     <tbody id="items">
                         @php
-                            $counts = 1;
+                            $counts = 0;
                         @endphp
                         @forelse($blogs as $blog)
+                            
                             <tr>
                                 <td>{{$counts}}</td>
                                 <td>{{$blog->title}}</td>
@@ -95,6 +100,31 @@
     </div>
 </div>
 @include('layouts.inc.scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+            }
+
+            $("#imgInp").change(function() {
+            readURL(this);
+            });
+</script>
 <script>
 $(document).ready( function () {
         $('#table_id').DataTable();
