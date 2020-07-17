@@ -38,10 +38,29 @@ class User extends Authenticatable
     ];
 
 
-    // relationships
 
+    //functions
+    public function is($roleName)
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == $roleName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // relationships
     public function blogs()
     {
         return $this->hasMany('App\Model\Blog');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Model\Role');
     }
 }

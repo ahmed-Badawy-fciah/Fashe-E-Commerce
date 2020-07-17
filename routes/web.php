@@ -13,7 +13,7 @@
 
 
 Route::get('/', 'ViewsController@index');
-Route::get('/about', 'ViewsController@about');
+Route::get('/about', 'ViewsController@about')->middleware('auth');
 Route::get('/contact', 'ViewsController@contact');
 Route::get('/blog', 'ViewsController@blog');
 Route::get('/blog/{id}', 'BlogController@show');
@@ -22,25 +22,29 @@ Route::get('/cart', 'ViewsController@cart');
 Route::get('/product', 'ViewsController@product');
 Route::get('/myprofile', 'ViewsController@profile');
 
-
-Route::prefix('admin')->group(function () {
+// The Middlewaaare check if the user has logged in and also if he has an allowed role to see the dashboard
+Route::group(['prefix' => 'admin', 'middleware'=> ['auth', 'checkrole:admin,blogger,manager,moderator']],function () {
     Route::get('/', function(){
         return view('admin.dashboard');
-    });
+    })->middleware('checkrole:admin,blogger,moderator');
     
     Route::apiresource('customer', 'CustomerController');
     Route::apiresource('order', 'OrderController');
     Route::apiresource('review', 'ReviewController');
-    Route::resource('blog', 'BlogController')->only([
-        'index','store' , 'update', 'destroy'
-    ]);
-    Route::resource('tag', 'TagController')->only([
-        'index','store', 'show' , 'update', 'destroy'
-    ]);
-    Route::apiresource('reply', 'ReplyController');
-    Route::apiresource('role', 'RoleController');
-    Route::apiresource('employee', 'EmployeeController');
 
+    // Check if he is a blogger
+    Route::group(['middleware' => 'checkrole:blogger'], function(){
+        Route::resource('blog', 'BlogController')->only([
+            'index','store' , 'update', 'destroy'
+        ])->middleware('checkrole:blogger,admin');
+        Route::resource('tag', 'TagController')->only([
+            'index','store', 'show' , 'update', 'destroy'
+        ]);
+        Route::apiresource('reply', 'ReplyController');    
+    });
+    
+    Route::apiresource('employee', 'EmployeeController');
+    
     Route::apiresource('category', 'CategoryController');
     Route::apiresource('product', 'ProductController');
     Route::apiresource('size', 'SizeController');
